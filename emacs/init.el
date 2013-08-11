@@ -44,6 +44,9 @@
 
 (global-syntax-subword-mode)
 
+;; switch-window
+(require 'switch-window)
+
 ;;;; Global settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hide scrollbars
 (scroll-bar-mode -1)
@@ -271,7 +274,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;;;; Custom keybindings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Windows
-(global-set-key (kbd "C-0") 'delete-window)
+(global-set-key (kbd "C-0") 'kill-buffer-and-window)
 
 ;; Buffers keybindings
 ;; Switch current window to the next buffer on the buffer list
