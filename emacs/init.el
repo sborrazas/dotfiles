@@ -256,6 +256,8 @@ point reaches the beginning or end of the buffer, stop there."
      fci-rule-width 1)
 
 (add-hook 'ruby-mode-hook 'fci-mode)
+(add-hook 'javascript-mode-hook 'fci-mode)
+(add-hook 'coffee-mode-hook 'fci-mode)
 
 ;; expand-region
 ;; This will select the current word first, then the current block,
