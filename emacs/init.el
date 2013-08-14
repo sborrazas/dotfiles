@@ -168,6 +168,24 @@ point reaches the beginning or end of the buffer, stop there."
 
 (global-set-key (kbd "M-j") 'goto-symbol)
 
+;; My indent and unindent for regions
+(defun custom-indent-region (N)
+  (interactive "p")
+  (if mark-active
+      (progn (indent-rigidly (min (mark) (point)) (max (mark) (point)) (* N tab-width))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(defun custom-unindent-region (N)
+  (interactive "p")
+  (if mark-active
+      (progn (indent-rigidly (min (mark) (point)) (max (mark) (point)) (* N -1 tab-width))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(global-set-key ">" 'custom-indent-region)
+(global-set-key "<" 'custom-unindent-region)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
