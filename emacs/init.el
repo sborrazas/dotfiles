@@ -96,6 +96,8 @@
 (setq indent-line-function 'insert-tab)
 ;; Display a visible bell for system alerts instead of the annoying bell sound
 (setq visible-bell 1)
+;; Make monday the first day on the week on the calendar
+(setq calendar-week-start-day 1)
 
 ;; Smarter beginning of line
 (defun smarter-move-beginning-of-line (arg)
