@@ -1,14 +1,15 @@
 (defvar my-packages '(markdown-mode
-		      rainbow-mode
-		      ace-jump-mode
-		      expand-region
-		      magit
-		      ido-ubiquitous
-		      haml-mode
-		      sass-mode
-		      coffee-mode
-		      fill-column-indicator
-		      smex))
+                      rainbow-mode
+                      ace-jump-mode
+                      expand-region
+                      magit
+                      ido-ubiquitous
+                      haml-mode
+                      sass-mode
+                      coffee-mode
+                      fill-column-indicator
+                      smex
+                      multiple-cursors))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -46,6 +47,12 @@
 
 ;; switch-window
 (require 'switch-window)
+
+;; multiple-cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;;; Global settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hide scrollbars
