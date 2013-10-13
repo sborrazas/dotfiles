@@ -94,6 +94,8 @@
 (setq-default tab-width 2)
 ;; Indent line function = insert-tab
 (setq indent-line-function 'insert-tab)
+;; Display a visible bell for system alerts instead of the annoying bell sound
+(setq visible-bell 1)
 
 ;; Smarter beginning of line
 (defun smarter-move-beginning-of-line (arg)
