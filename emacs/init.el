@@ -48,6 +48,10 @@
 ;; switch-window
 (require 'switch-window)
 
+;; multi-term
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
+
 ;; multiple-cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
