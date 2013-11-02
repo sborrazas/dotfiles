@@ -243,6 +243,7 @@ point reaches the beginning or end of the buffer, stop there."
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
 
 ;; html specific
 (add-to-list 'auto-mode-alist '("\\.html$" . jinja2-mode))
