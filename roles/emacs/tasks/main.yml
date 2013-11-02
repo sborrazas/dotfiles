@@ -1,0 +1,42 @@
+- name: emacs directory exists
+  file:
+    state: directory
+    path: "{{ home_dir }}/.emacs.d"
+
+- name: emacs modules copied
+  copy:
+    src: "modules/"
+    dest: "{{ home_dir }}/.emacs.d/modules"
+
+- name: irc logs directory exists
+  file:
+    state: directory
+    path: "{{ home_dir }}/.logs"
+
+- name: emacs init file exists
+  copy:
+    src: "init.el"
+    dest: "{{ home_dir }}/.emacs.d/init.el"
+
+- name: emacs config file exists
+  copy:
+    src: "config.el"
+    dest: "{{ home_dir }}/.emacs.d/config.el"
+
+- name: emacs binaries exist
+  copy:
+    src: "bin/"
+    dest: "{{ home_dir }}/.emacs.d/bin"
+    mode: 0755
+
+- name: emacs binaries are updated
+  file:
+    state: link
+    src: "{{ home_dir }}/.emacs.d/bin/{{ item }}"
+    dest: "/usr/bin/{{ item }}"
+    owner: "{{ user }}"
+    force: True
+  sudo: True
+  with_items:
+    - emacs
+    - emacsclient

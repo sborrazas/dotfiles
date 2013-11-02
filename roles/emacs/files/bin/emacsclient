@@ -1,0 +1,3 @@
+#!/bin/sh
+
+$HOME/Applications/Emacs.app/Contents/MacOS/bin/emacsclient $1

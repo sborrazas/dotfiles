@@ -1,0 +1,28 @@
+- name: homebrew installed
+  shell: 'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby'
+  args:
+    creates: "/usr/local/bin/brew"
+
+- name: cask repository added
+  shell: "brew tap caskroom/cask"
+  args:
+    creates: "/usr/local/Library/Taps/caskroom"
+
+- name: opt directory exists
+  file:
+    state: directory
+    path: "/opt"
+  sudo: True
+
+- name: cask directory writable
+  file:
+    state: directory
+    path: "/opt/homebrew-cask"
+    owner: "{{ user }}"
+  sudo: True
+
+- name: homebrew packages installed
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items: homebrew_packages

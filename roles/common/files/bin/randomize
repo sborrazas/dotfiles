@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "securerandom"
+
+length = (ARGV[0] || 16).to_i - 1
+puts SecureRandom.hex(length)[0..length]

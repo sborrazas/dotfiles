@@ -1,0 +1,9 @@
+- name: ruby 2.1.0 installed
+  shell: rbenv install 2.1.0
+  args:
+    creates: "{{ home_dir }}/.rbenv/versions/2.1.0"
+
+- name: ruby 2.1.0 set as global
+  copy:
+    src: ruby-version
+    dest: "{{ home_dir }}/.ruby-version"

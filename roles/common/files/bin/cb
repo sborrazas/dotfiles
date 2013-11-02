@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+if STDIN.isatty
+  print `pbpaste`
+else
+  IO.popen("pbcopy", "w").print(STDIN.read)
+end

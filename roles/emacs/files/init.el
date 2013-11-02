@@ -1,13 +1,18 @@
-(defvar my-packages '(markdown-mode
+(defvar my-packages '(exec-path-from-shell
+                      markdown-mode
                       expand-region
                       magit
                       ido
                       haml-mode
                       sass-mode
                       coffee-mode
+                      haskell-mode
+                      yaml-mode
                       fill-column-indicator
                       smex
                       web-mode
+                      erc-terminal-notifier
+                      jsx-mode
                       multiple-cursors))
 
 (require 'package)
@@ -28,9 +33,20 @@
            (package-install package))))
  my-packages)
 
+;; Add paths to exec-path
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+;; (setq exec-path (append exec-path '("/usr/local/bin")))
+;; (setq exec-path (append exec-path '("/usr/local/bin")))
+
 ;;;; Custom modules settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'load-path (concat user-emacs-directory
             (convert-standard-filename "modules/")))
+
+(load-file
+  (concat user-emacs-directory
+    (convert-standard-filename "config.el")))
 
 ;; web-mode
 (require 'web-mode)
@@ -40,6 +56,9 @@
 (setq web-mode-enable-auto-pairing nil)
 (setq web-mode-enable-auto-opening nil)
 (setq web-mode-tag-auto-close-style 0)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-markup-indent-offset 2)
 
 ;; grep-ed
 (require 'grep-ed)
@@ -59,6 +78,18 @@
 ;; multi-term
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
+
+;; Default config (http://rawsyntax.com/blog/learn-emacs-zsh-and-multi-term/)
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)))
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
+            (add-to-list 'term-bind-key-alist '("C-c C-k" . term-char-mode))))
+
+(global-set-key (kbd "C-c C-t") 'multi-term)
 
 ;; multiple-cursors
 (require 'multiple-cursors)
@@ -213,7 +244,7 @@ point reaches the beginning or end of the buffer, stop there."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(help-at-pt-timer-delay 0.3)
- '(message-log-max nil)
+ '(message-log-max 2000)
 )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -224,7 +255,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 110)
 
 ;;;; Mode specific settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; css/scss specific
@@ -273,7 +304,7 @@ point reaches the beginning or end of the buffer, stop there."
       ido-enable-flex-matching t
       ido-auto-merge-work-directories-length nil
       ido-create-new-buffer 'always
-      ido-use-virtual-buffers t
+      ido-use-virtual-buffers nil
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10
       ido-enable-last-directory-history nil
@@ -294,6 +325,7 @@ point reaches the beginning or end of the buffer, stop there."
      (set-face-foreground 'magit-diff-del "red3")
      (set-face-background 'magit-item-highlight "black")))
 (put 'scroll-left 'disabled nil)
+(setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 ;; Fci ruler
 ;; The Fci ruler will display a vertinal line to where you should not write code
@@ -303,7 +335,14 @@ point reaches the beginning or end of the buffer, stop there."
      fci-rule-color "white"
      fci-rule-width 1)
 
-(add-hook 'after-change-major-mode-hook 'turn-on-fci-mode)
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
+(add-hook 'js-mode-hook 'turn-on-fci-mode)
+(add-hook 'ruby-mode-hook 'turn-on-fci-mode)
+(add-hook 'haskell-mode-hook 'turn-on-fci-mode)
+(add-hook 'lisp-mode-hook 'turn-on-fci-mode)
+(add-hook 'common-lisp-mode-hook 'turn-on-fci-mode)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-fci-mode)
+(add-hook 'yaml-mode-hook 'turn-on-fci-mode)
 
 ;; expand-region
 ;; This will select the current word first, then the current block,
@@ -325,3 +364,62 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Close menu when it's open
 (if (menu-bar-mode)
     (menu-bar-mode -1))
+
+;; rcirc
+(require 'setup-rcirc)
+
+;; Logs directory
+(setq rcirc-log-directory config-irc-log-directory)
+
+;; Change user info
+(setq rcirc-default-nick "sborrazas")
+(setq rcirc-default-user-name "sborrazas")
+(setq rcirc-default-full-name "Sebastian Borrazas")
+(setq rcirc-default-port 6667)
+(setq rcirc-fill-column 80)
+
+;; Workgroups
+(require 'workgroups)
+(setq wg-query-for-save-on-emacs-exit nil)
+(setq wg-query-for-save-on-workgroups-mode-exit nil)
+(setq wg-mode-line-face "lime green")
+(workgroups-mode 1)
+
+(defun load-term-workgroup ()
+  "Load the Terms workgroup"
+  (interactive)
+  (wg-create-workgroup "Terms")
+  (multi-term)
+  (split-window-right)
+  (switch-window)
+  (multi-term)
+  (switch-window))
+
+(defun load-project-workgroup () ;; TODO
+  "Load the project git repo"
+  (interactive)
+  (wg-create-workgroup project-name)
+  (split-window-right)
+  (switch-window)
+  (magit-status (convert-standard-filename "~/work")))
+
+(defun load-irc-workgroup () ;; TODO: Split the window between Freenode and CB
+  "Connect to IRC"
+  (interactive)
+  (wg-create-workgroup "IRC")
+  (rcirc nil)
+  (split-window-right)
+  (switch-window)
+  (switch-to-buffer "*irc.freenode.net*"))
+
+;; Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation-mode)
+
+;; Special characters
+(global-set-key (kbd "M-e") (lambda () (insert-char "á")))
+
+;; Agda
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+
+(setq agda2-include-dirs (quote ("." "/Users/sebastian/agda-stdlib/src")))

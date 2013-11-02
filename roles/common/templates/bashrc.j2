@@ -1,0 +1,59 @@
+if [ -f /etc/bashrc ]
+then
+  source /etc/bashrc
+fi
+
+# Lang
+export LANG=en_US.UTF-8
+
+# Default PATH
+PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/bin:$HOME/.bin
+
+# Prompt
+if [ $INSIDE_EMACS ]; then
+  SEPARATOR="->";
+else
+  SEPARATOR="➜";
+fi
+
+export PS1="\[$(tput bold)\]\[$(tput setaf 5)\]$SEPARATOR \[$(tput setaf 6)\]\w\[$(tput setaf 3)\] \$(parse_git_branch)\[$(tput sgr0)\]"
+
+# Added by the Heroku Toolbelt
+PATH="/usr/local/heroku/bin:$PATH"
+
+# Add less viewer some options by default
+export LESS='-i-r-P%f(%i/%m) Line %lt/%L'
+
+# `history` command size is too small. Making it bigger.
+# Maximum number of events saved during a session:
+export HISTSIZE=1000000
+# Maximum number of events saved between sessions:
+export HISTFILESIZE=1000000000
+shopt -s histappend
+
+# Rbenv
+PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+# if [ -f rbenv ]; then
+#   eval "$(rbenv init -)"
+# fi
+
+# My Bash aliases
+alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
+alias octave='exec /Applications/Octave.app/Contents/Resources/bin/octave'
+alias scheme='exec /Applications/MIT\:GNU\ Scheme.app/Contents/Resources/mit-scheme'
+alias ls='ls -F'
+alias ll='ls -l'
+
+# Display git branch name on bash
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/git:(\1) /'
+}
+
+# Python
+# PATH="/usr/local/share/python:$PATH"
+
+# Node
+PATH="$HOME/.node-global/bin:$PATH"
+
+# Cabal (Haskell)
+PATH="$HOME/.cabal/bin:$PATH"

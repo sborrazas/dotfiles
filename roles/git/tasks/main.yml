@@ -1,0 +1,21 @@
+- name: gitconfig copied
+  copy:
+    src: gitconfig
+    dest: "{{ home_dir }}/.gitconfig"
+
+- name: gitignore copied
+  copy:
+    src: gitignore
+    dest: "{{ home_dir }}/.gitignore"
+
+- name: work directory exists
+  file:
+    state: directory
+    path: "{{ home_dir }}/work"
+
+- name: repositories cloned
+  git:
+    repo: "git@github.com:{{ item.name }}.git"
+    dest: "{{ home_dir }}/work/{{ item.path | default(item.name) }}"
+    accept_hostkey: True
+  with_items: repositories

@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+
+conversion_hash = {
+  "Ã±"=>"ñ",
+  "Ã¡"=>"á",
+  "ï»¿"=>"",
+  "Ã©"=>"é",
+  "Ã³"=>"ó",
+  "Ã­"=>"í",
+  "Ã\u0091OS"=>"Ñ",
+  "Ã\u0093"=>"Ó",
+  "Ãº"=>"ú",
+  "Ã\u008D"=>"Í",
+  "Ã\u0091"=>"Ñ",
+  "Ã\u009A"=>"Ú",
+  "Ã\u0089"=>"É",
+  "Ã\u0081"=>"Á",
+  "Ã²"=>"Ó", 
+  "Ã¨"=>"É"
+}
+
+puts conversion_hash.each_with_object(STDIN.read) do |(pattern, replacement), text|
+  text.gsub!(pattern, replacement)
+end

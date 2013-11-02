@@ -1,0 +1,30 @@
+- name: cabal updated
+  shell: cabal update
+  args:
+    creates: "{{ home_dir }}/.cabal/packages"
+
+- name: cabal-install installed
+  shell: cabal install cabal-install
+  args:
+    creates: "{{ home_dir }}/.cabal/bin"
+
+- name: agda installed
+  shell: cabal install {{ item }}
+  args:
+    creates: "{{ home_dir }}/.cabal/packages/hackage.haskell.org/{{ item }}"
+  with_items:
+    - alex
+    - happy
+    - Agda
+
+- name: agda standard libs exist
+  git:
+    repo: "https://github.com/agda/agda-stdlib.git"
+    dest: "{{ home_dir }}/.agda-libs"
+    accept_hostkey: True
+
+- name: agda standard libs dependencies met
+  shell: cabal install
+  args:
+    chdir: "{{ home_dir }}/.agda-libs/ffi"
+    creates: "{{ home_dir }}/.agda-libs/ffi/dist"

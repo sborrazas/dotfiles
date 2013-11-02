@@ -1,0 +1,20 @@
+- name: bashrc copied
+  template:
+    src: bashrc.j2
+    dest: "{{ home_dir }}/.bashrc"
+
+- name: bash_profiled copied
+  template:
+    src: bash_profile.j2
+    dest: "{{ home_dir }}/.bash_profile"
+
+- name: default ssh key exists
+  shell: ssh-keygen -f "{{ home_dir }}/.ssh/id_rsa" -N ""
+  args:
+    creates: "{{ home_dir }}/.ssh/id_rsa"
+
+- name: helper binaries exist
+  copy:
+    src: bin/
+    dest: "{{ home_dir }}/.bin"
+    mode: 0755
