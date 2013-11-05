@@ -76,8 +76,6 @@
 (pending-delete-mode t)
 ;; AltGr != Meta
 (setq ns-right-alternate-modifier nil)
-;; Bar cursor
-(setq-default cursor-type 'bar)
 ;; ispell bin location
 (setq ispell-program-name "/usr/local/bin/ispell")
 ;; Always y/n o p
