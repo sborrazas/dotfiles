@@ -318,3 +318,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; TODO
 ;; Open buffer list and go to it
 ;; TODO
+
+;; Close menu when it's open
+(if (menu-bar-mode)
+    (menu-bar-mode -1))
