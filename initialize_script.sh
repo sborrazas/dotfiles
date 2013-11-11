@@ -18,3 +18,8 @@ sudo cp ./bin/emacs /usr/bin/emacs
 curl https://raw.github.com/creationix/nvm/master/install.sh | sh
 # TODO: Install some node version inside nvm and also install something to uglify
 # https://github.com/creationix/nvm/
+
+# Install brew
+# ..
+# Install postgresql with brew
+brew install postgresql
