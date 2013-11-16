@@ -1,6 +1,9 @@
 # Install Git
 # TODO
 
+# Install Heroku Toolbelt
+# TODO
+
 # Clone repos
 mkdir ~/dev_repos
 # TODO Ask for a list of repos, iterate through each and clone it
