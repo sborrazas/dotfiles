@@ -293,7 +293,9 @@ point reaches the beginning or end of the buffer, stop there."
 
 (add-hook 'ruby-mode-hook 'fci-mode)
 (add-hook 'javascript-mode-hook 'fci-mode)
+(add-hook 'js-mode-hook 'fci-mode)
 (add-hook 'coffee-mode-hook 'fci-mode)
+(add-hook 'octave-mode-hook 'fci-mode)
 
 ;; expand-region
 ;; This will select the current word first, then the current block,
