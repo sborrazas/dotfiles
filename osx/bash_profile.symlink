@@ -1,27 +1,8 @@
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-export PATH=/usr/local/bin:$PATH
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
-# export PATH=$PATH:/usr/local/mysql/bin
-# Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# Bash defaults
+if [ -f ~/.bashrc ]
+then
+  source ~/.bashrc
+fi
 
-# Rbenv
-eval "$(rbenv init -)"
-
-# My Bash aliases
-alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
-
-# Display git branch name on bash
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/git:(\1)/'
-}
+PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/bin
 export PS1="\[\033[00m\]\u@\h\[\033[0;32m\] \w \[\033[0;36m\]\$(parse_git_branch) \[\033[00m\]$\[\033[00m\] "
-
-# Add less viewer some options by default
-export LESS='-i-r-P%f(%i/%m) Line %lt/%L'
-
-# `history` command size is too small. Making it larger
-export HISTFILESIZE=10000
-export HISTSIZE=10000
-shopt -s histappend
-# export PROMPT_COMMAND='history -a'
