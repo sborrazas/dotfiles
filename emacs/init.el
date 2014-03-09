@@ -206,6 +206,7 @@ point reaches the beginning or end of the buffer, stop there."
  ;; If there is more than one, they won't work right.
  '(help-at-pt-timer-delay 0.3)
  '(help-at-pt-display-when-idle '(flymake-overlay))
+ '(message-log-max nil)
 )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -217,7 +218,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 130)
 
 ;;;; Mode specific settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; css/scss specific
