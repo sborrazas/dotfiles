@@ -3,7 +3,7 @@
                       ace-jump-mode
                       expand-region
                       magit
-                      ido-ubiquitous
+                      ido
                       haml-mode
                       sass-mode
                       coffee-mode
@@ -255,23 +255,23 @@ point reaches the beginning or end of the buffer, stop there."
 ;;;; Packages settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smex package
 ;; Smex is a M-x enhancement for Emacs.
-;; Built on top of Ido, it provides a convenient interface to your recently and most frequently used commands.
-;; And to all the other commands, too.
+;; Built on top of Ido, it provides a convenient interface to your recently and
+;; most frequently used commands. And to all the other commands, too.
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
 ;; ido-mode package
 ;; IDO is a helper for buffers and files management. Works well with smex.
-(ido-mode t)
-(ido-ubiquitous t)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-auto-merge-work-directories-length nil
       ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+      ido-max-prospects 10
+      ido-enable-last-directory-history nil
+      ido-record-commands nil)
+(ido-mode t)
 
 ;; Uniquify package
 ;; Uniquify will make sure buffer names are unique.
