@@ -222,7 +222,9 @@ point reaches the beginning or end of the buffer, stop there."
 ;;;; Mode specific settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; css/scss specific
 (add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.less$" . sass-mode))
 (setq css-indent-offset 2)
+(setq sass-indent-offset 2)
 
 ;; js specific
 (setq js-indent-level 2)
@@ -245,7 +247,9 @@ point reaches the beginning or end of the buffer, stop there."
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
 
 ;; html specific
-(add-to-list 'auto-mode-alist '("\\.html$" . jinja2-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.skim$" . haml-mode))
 
 ;;;; Packages settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smex package
