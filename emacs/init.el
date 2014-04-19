@@ -246,6 +246,7 @@ point reaches the beginning or end of the buffer, stop there."
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
+(setq ruby-deep-indent-paren nil)
 
 ;; html specific
 (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
