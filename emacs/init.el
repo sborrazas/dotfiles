@@ -1,6 +1,4 @@
 (defvar my-packages '(markdown-mode
-                      rainbow-mode
-                      ace-jump-mode
                       expand-region
                       magit
                       ido
@@ -9,6 +7,7 @@
                       coffee-mode
                       fill-column-indicator
                       smex
+                      web-mode
                       multiple-cursors))
 
 (require 'package)
@@ -32,6 +31,15 @@
 ;;;; Custom modules settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'load-path (concat user-emacs-directory
             (convert-standard-filename "modules/")))
+
+;; web-mode
+(require 'web-mode)
+(setq web-mode-script-padding 2)
+(setq web-mode-style-padding 2)
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-enable-auto-pairing nil)
+(setq web-mode-enable-auto-opening nil)
+(setq web-mode-tag-auto-close-style 0)
 
 ;; grep-ed
 (require 'grep-ed)
@@ -205,7 +213,6 @@ point reaches the beginning or end of the buffer, stop there."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(help-at-pt-timer-delay 0.3)
- '(help-at-pt-display-when-idle '(flymake-overlay))
  '(message-log-max nil)
 )
 (custom-set-faces
@@ -213,7 +220,6 @@ point reaches the beginning or end of the buffer, stop there."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flymake-errline ((t (:underline (:color "red" :style wave)))))
 )
 
 (put 'downcase-region 'disabled nil)
@@ -249,9 +255,8 @@ point reaches the beginning or end of the buffer, stop there."
 (setq ruby-deep-indent-paren nil)
 
 ;; html specific
-(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.skim$" . haml-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 
 ;;;; Packages settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smex package
@@ -303,11 +308,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; This will select the current word first, then the current block,
 ;; then the current def function and so on. VERY practical.
 (global-set-key (kbd "M-s") 'er/expand-region)
-
-;; flymake package
-;; Automatically enable flymake-mode upon opening any file for which
-;; syntax check is possible
-(add-hook 'find-file-hook 'flymake-find-file-hook)
 
 ;;;; Custom keybindings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Windows
