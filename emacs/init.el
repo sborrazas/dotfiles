@@ -319,10 +319,8 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-.") 'next-buffer)
 ;; Switch current window to the previous buffer on the buffer list
 (global-set-key (kbd "C-,") 'previous-buffer)
-;; Kill and close current buffer
-;; TODO
 ;; Open buffer list and go to it
-;; TODO
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Close menu when it's open
 (if (menu-bar-mode)
