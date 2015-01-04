@@ -4,6 +4,9 @@
 # Install Heroku Toolbelt
 # TODO
 
+# Install rbenv
+# TODO
+
 # Clone repos
 mkdir ~/dev_repos
 # TODO Ask for a list of repos, iterate through each and clone it
@@ -26,16 +29,6 @@ sudo ln -s "$(pwd)/bin/emacsclient" /usr/bin/emacsclient
 brew install node
 # Install brew
 # ..
-
-# Brew - postgresql
-brew install postgresql
-# Initialize the location where postgres will store its data
-initdb /usr/local/var/postgres
-# Start the postgres server in the background
-pg_ctl -D /usr/local/var/pg_data -l /tmp/postgres_logfile start
-# Copy the launch agent to start postgres on login
-cp /usr/local/Cellar/postgresql/9.3.1/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/
-launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 
 # Python
 brew install python
