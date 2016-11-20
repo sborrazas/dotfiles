@@ -9,13 +9,13 @@
 - name: hacker defaults settings set
   script: set_hacker_defaults.sh
 
-- name: copy finder sidebarlists
-  copy:
-    src: "com.apple.sidebarlists.plist"
-    dest: "{{ home_dir }}/com.apple.sidebarlists.plist"
+# - name: copy finder sidebarlists
+#   copy:
+#     src: "com.apple.sidebarlists.plist"
+#     dest: "{{ home_dir }}/com.apple.sidebarlists.plist"
 
-- name: set finder sidebarlists
-  shell: "plutil -convert binary1 {{ home_dir }}/com.apple.sidebarlists.plist -o {{ home_dir }}/Library/Preferences/com.apple.sidebarlists.plist"
+# - name: set finder sidebarlists
+#   shell: "plutil -convert binary1 {{ home_dir }}/com.apple.sidebarlists.plist -o {{ home_dir }}/Library/Preferences/com.apple.sidebarlists.plist"
 
 - name: set the netbios name
   become: yes
