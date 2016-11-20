@@ -16,3 +16,27 @@
 
 - name: set finder sidebarlists
   shell: "plutil -convert binary1 {{ home_dir }}/com.apple.sidebarlists.plist -o {{ home_dir }}/Library/Preferences/com.apple.sidebarlists.plist"
+
+- name: set the netbios name
+  become: yes
+  osx_defaults:
+    domain: com.apple.smb.server
+    key: NetBIOSName
+    type: string
+    value: "{{ hostname }}"
+    state: present
+
+- name: computername set
+  shell: scutil --set ComputerName {{ hostname }}
+  become: yes
+  when: ansible_hostname != hostname
+
+- name: hostname set
+  shell: scutil --set HostName {{ hostname }}
+  become: yes
+  when: ansible_hostname != hostname
+
+- name: localhostname set
+  shell: scutil --set LocalHostName {{ hostname }}
+  become: yes
+  when: ansible_hostname != hostname
