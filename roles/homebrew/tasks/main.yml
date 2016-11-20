@@ -1,12 +1,23 @@
 - name: homebrew installed
-  shell: 'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby'
+  shell: "curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby"
   args:
     creates: "/usr/local/bin/brew"
 
-- name: cask repository added
+- name: caches directory owned by current user
+  file:
+    path: "/Library/Caches/Homebrew"
+    state: directory
+    owner: "{{ user }}"
+
+- name: caskroom repository added
   shell: "brew tap caskroom/cask"
   args:
     creates: "/usr/local/Library/Taps/caskroom"
+
+- name: sborrazas repository added
+  shell: "brew tap sborrazas/casks"
+  args:
+    creates: "/usr/local/Library/Taps/sborrazas"
 
 - name: opt directory exists
   file:
@@ -20,6 +31,10 @@
     path: "/opt/homebrew-cask"
     owner: "{{ user }}"
   sudo: True
+
+- name: homebrew up to date
+  homebrew:
+    update_homebrew: True
 
 - name: homebrew packages installed
   homebrew:

@@ -24,6 +24,8 @@
       - cabal-install
       - brew-cask
       - gmp
+      - jenv
+      - sbt
     osx_apps:
       - package_name: "google-chrome"
         app_name: "Google Chrome"
@@ -49,3 +51,9 @@
         app_name: "Sketch"
       - package_name: "emacs"
         app_name: "Emacs"
+      - package_name: "java"
+        app_name: "Latest Java"
+        path: "/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk"
+      - package_name: "java7"
+        app_name: "Java 7"
+        path: "/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk"

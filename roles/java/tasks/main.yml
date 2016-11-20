@@ -1,0 +1,14 @@
+- name: add version 8 to jenv
+  shell: 'jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home'
+  args:
+    creates: "{{ home_dir }}/.jenv/versions/oracle64-1.8.0.40"
+
+- name: add version 7 to jenv
+  shell: 'jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home'
+  args:
+    creates: "{{ home_dir }}/.jenv/versions/oracle64-1.7.0.75"
+
+- name: set java 8 as default
+  shell: 'jenv global oracle64-1.8.0.05'
+  args:
+    creates: "{{ home_dir }}/.jenv/version"

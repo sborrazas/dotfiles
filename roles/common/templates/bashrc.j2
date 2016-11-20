@@ -7,7 +7,7 @@ fi
 export LANG=en_US.UTF-8
 
 # Default PATH
-PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/bin:$HOME/.bin
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/.bin:$PATH
 
 # Prompt
 if [ $INSIDE_EMACS ]; then
@@ -33,9 +33,15 @@ shopt -s histappend
 
 # Rbenv
 PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
-# if [ -f rbenv ]; then
-#   eval "$(rbenv init -)"
-# fi
+if [ -f rbenv ]; then
+  eval "$(rbenv init -)"
+fi
+
+# Jenv
+PATH="$HOME/.jenv/bin:$PATH"
+if [ -f rbenv ]; then
+  eval "$(jenv init -)"
+fi
 
 # My Bash aliases
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
@@ -57,3 +63,6 @@ PATH="$HOME/.node-global/bin:$PATH"
 
 # Cabal (Haskell)
 PATH="$HOME/.cabal/bin:$PATH"
+
+# Emacs
+PATH="$HOME/.emacs.d/bin:$PATH"
