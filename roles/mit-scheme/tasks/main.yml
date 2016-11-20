@@ -1,0 +1,14 @@
+- name: x11 repository added
+  shell: "brew tap homebrew/x11"
+  args:
+    creates: "/usr/local/Library/Taps/homebrew"
+
+- name: xquartz installed
+  shell: "brew cask install xquartz"
+  args:
+    creates: "/Applications/Utilities/XQuartz.app"
+
+- name: homebrew mit-scheme installed
+  homebrew:
+    name: "mit-scheme"
+    state: present

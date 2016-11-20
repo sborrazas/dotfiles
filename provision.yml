@@ -8,6 +8,7 @@
     - haskell
     - emacs
     # - osx
+    - mit-scheme
   vars:
     user: "{{ ansible_env.USER }}"
     home_dir: "{{ ansible_env.HOME }}"
