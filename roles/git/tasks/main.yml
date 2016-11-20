@@ -18,4 +18,6 @@
     repo: "git@github.com:{{ item.name }}.git"
     dest: "{{ home_dir }}/work/{{ item.path | default(item.name) }}"
     accept_hostkey: True
+    force: False
+    update: False
   with_items: repositories
