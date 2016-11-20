@@ -9,11 +9,6 @@
     state: directory
     owner: "{{ user }}"
 
-- name: caskroom repository added
-  shell: "brew tap caskroom/cask"
-  args:
-    creates: "/usr/local/Library/Taps/caskroom"
-
 - name: sborrazas repository added
   shell: "brew tap sborrazas/casks"
   args:

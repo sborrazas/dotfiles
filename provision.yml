@@ -24,7 +24,6 @@
       - terminal-notifier
       - ghc
       - cabal-install
-      - brew-cask
       - gmp
       - jenv
       - sbt
