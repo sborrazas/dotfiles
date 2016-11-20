@@ -25,9 +25,6 @@
 ;; Author: Lorenzo Villani <lorenzo@villani.me>
 ;; URL: https://github.com/lvillani/el-monokai-theme
 
-(unless (>= 24 emacs-major-version)
-  (error "monokai-theme requires Emacs 24 or later."))
-
 (deftheme monokai
   "Monokai color theme")
 
