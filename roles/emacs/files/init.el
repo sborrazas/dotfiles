@@ -435,6 +435,9 @@ point reaches the beginning or end of the buffer, stop there."
   '(agda2-highlight-record-face ((t (:inherit font-lock-type-face))))
   '(agda2-highlight-string-face ((t (:inherit font-lock-string-face)))))
 
+;; JSX
+(setq jsx-indent-level 2)
+
 ;; Bline mode (for lines with column > 80)
 (setq whitespace-style '(lines))
 (setq whitespace-line-column 80)

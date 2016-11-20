@@ -16,6 +16,7 @@
     - alex
     - happy
     - Agda
+    - bnfc
 
 - name: agda standard libs exist
   git:
