@@ -367,7 +367,6 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'workgroups)
 (setq wg-query-for-save-on-emacs-exit nil)
 (setq wg-query-for-save-on-workgroups-mode-exit nil)
-(setq wg-mode-line-face "lime green")
 (workgroups-mode 1)
 
 (defun load-term-workgroup ()
@@ -435,3 +434,43 @@ point reaches the beginning or end of the buffer, stop there."
   '(agda2-highlight-primitive-type-face ((t (:inherit font-lock-type-face))))
   '(agda2-highlight-record-face ((t (:inherit font-lock-type-face))))
   '(agda2-highlight-string-face ((t (:inherit font-lock-string-face)))))
+
+;; Bline mode (for lines with column > 80)
+(setq whitespace-style '(lines))
+(setq whitespace-line-column 80)
+(global-whitespace-mode 1)
+
+(defvar bline-minor-mode-font-lock-keywords
+  ;; cf. `whitespace-color-on'
+  (list
+   (list
+    (let ((line-column (or whitespace-line-column fill-column)))
+      (format
+       "^\\([^\t\n]\\{%s\\}\\|[^\t\n]\\{0,%s\\}\t\\)\\{%d\\}%s\\(.+\\)$"
+       whitespace-tab-width
+       (1- whitespace-tab-width)
+       (/ line-column whitespace-tab-width)
+
+
+       (let ((rem (% 84 whitespace-tab-width)))
+         (if (zerop rem)
+             ""
+           (format ".\\{%d\\}" rem)))))
+    0 ; whole line
+    whitespace-line t)))
+
+(define-minor-mode bline-minor-mode "Overlong lines can make you blined."
+  nil nil nil
+  (if bline-minor-mode
+      (font-lock-add-keywords nil bline-minor-mode-font-lock-keywords t)
+    (font-lock-remove-keywords nil bline-minor-mode-font-lock-keywords))
+  (font-lock-mode 1))
+
+(defun bline-minor-mode--insin ()
+  (add-hook 'after-change-functions 'bline-minor-mode--uate nil t))
+
+(defun bline-minor-mode--uate (&rest ignore)
+  (bline-minor-mode 1)
+  (remove-hook 'after-change-functions 'bline-minor-mode--uate t))
+
+(add-hook 'prog-mode-hook 'bline-minor-mode--insin)
