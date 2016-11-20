@@ -401,7 +401,20 @@ point reaches the beginning or end of the buffer, stop there."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation-mode)
 
 ;; Special characters
-(global-set-key (kbd "M-e") (lambda () (insert-char "á")))
+(global-unset-key (kbd "M-="))
+(global-set-key (kbd "M-= M-A") (lambda () (interactive) (insert-char ?Á)))
+(global-set-key (kbd "M-= M-a") (lambda () (interactive) (insert-char ?á)))
+(global-set-key (kbd "M-= M-E") (lambda () (interactive) (insert-char ?É)))
+(global-set-key (kbd "M-= M-e") (lambda () (interactive) (insert-char ?é)))
+(global-set-key (kbd "M-= M-I") (lambda () (interactive) (insert-char ?Í)))
+(global-set-key (kbd "M-= M-i") (lambda () (interactive) (insert-char ?í)))
+(global-set-key (kbd "M-= M-O") (lambda () (interactive) (insert-char ?Ó)))
+(global-set-key (kbd "M-= M-o") (lambda () (interactive) (insert-char ?ó)))
+(global-set-key (kbd "M-= M-U") (lambda () (interactive) (insert-char ?Ú)))
+(global-set-key (kbd "M-= M-u") (lambda () (interactive) (insert-char ?ú)))
+(global-set-key (kbd "M-= M-N") (lambda () (interactive) (insert-char ?Ñ)))
+(global-set-key (kbd "M-= M-n") (lambda () (interactive) (insert-char ?ñ)))
+(global-set-key (kbd "M-= M--") (lambda () (interactive) (insert-char ?—)))
 
 ;; Agda
 (load-file (let ((coding-system-for-read 'utf-8))
