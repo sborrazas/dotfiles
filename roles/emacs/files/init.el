@@ -327,23 +327,7 @@ point reaches the beginning or end of the buffer, stop there."
      (set-face-background 'magit-item-highlight "black")))
 (put 'scroll-left 'disabled nil)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
-
-;; Fci ruler
-;; The Fci ruler will display a vertinal line to where you should not write code
-;; beyond it.
-;; The Fci ruler will be activated for ruby-mode only.
-(setq fci-rule-column 80
-     fci-rule-color "white"
-     fci-rule-width 1)
-
-(add-hook 'text-mode-hook 'turn-on-fci-mode)
-(add-hook 'js-mode-hook 'turn-on-fci-mode)
-(add-hook 'ruby-mode-hook 'turn-on-fci-mode)
-(add-hook 'haskell-mode-hook 'turn-on-fci-mode)
-(add-hook 'lisp-mode-hook 'turn-on-fci-mode)
-(add-hook 'common-lisp-mode-hook 'turn-on-fci-mode)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-fci-mode)
-(add-hook 'yaml-mode-hook 'turn-on-fci-mode)
+(setq magit-repo-dirs '("~/work"))
 
 ;; expand-region
 ;; This will select the current word first, then the current block,
