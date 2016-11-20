@@ -45,3 +45,5 @@ the following parameters to the `ansible-playbook` command:
 
 * Import the terminal config file located in the Desktop and set it as the
   default profile.
+* Go into iTunes, on the menu "Store", "Authorize this computer" so you're
+  able to download the songs.
