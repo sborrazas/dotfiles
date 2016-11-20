@@ -2,12 +2,13 @@
   roles:
     - common
     - git
-    # - homebrew
+    - homebrew
     - rbenv
-    # - apps
+    - apps
     - haskell
     - emacs
-    # - osx
+    - osx
+    - java
     - mit-scheme
   vars:
     user: "{{ ansible_env.USER }}"
