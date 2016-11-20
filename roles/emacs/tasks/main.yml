@@ -22,21 +22,3 @@
   copy:
     src: "config.el"
     dest: "{{ home_dir }}/.emacs.d/config.el"
-
-- name: emacs binaries exist
-  copy:
-    src: "bin/"
-    dest: "{{ home_dir }}/.emacs.d/bin"
-    mode: 0755
-
-- name: emacs binaries are updated
-  file:
-    state: link
-    src: "{{ home_dir }}/.emacs.d/bin/{{ item }}"
-    dest: "/usr/bin/{{ item }}"
-    owner: "{{ user }}"
-    force: True
-  sudo: True
-  with_items:
-    - emacs
-    - emacsclient
