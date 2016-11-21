@@ -3,16 +3,10 @@
   args:
     creates: "/usr/local/bin/brew"
 
-- name: caches directory owned by current user
-  file:
-    path: "/Library/Caches/Homebrew"
-    state: directory
-    owner: "{{ user }}"
-
 - name: sborrazas repository added
   shell: "brew tap sborrazas/casks"
   args:
-    creates: "/usr/local/Library/Taps/sborrazas"
+    creates: "/usr/local/Homebrew/Library/Taps/sborrazas"
 
 - name: opt directory exists
   file:
