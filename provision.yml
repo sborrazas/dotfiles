@@ -70,6 +70,3 @@
       - package_name: "heroku-toolbelt"
         app_name: "Heroku Toolbelt"
         path: "/usr/local/heroku"
-      - package_name: "isabelle"
-        app_name: "Isabelle"
-        path: "/Applications/Isabelle2016.app"
