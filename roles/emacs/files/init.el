@@ -419,7 +419,7 @@ point reaches the beginning or end of the buffer, stop there."
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
 
-(setq agda2-include-dirs (quote ("." "/Users/sborrazas/.agda-libs/src")))
+(setq agda2-program-args '("-i" "/Users/sborrazas/.agda-libs/src"))
 (custom-set-faces
   '(wg-mode-line-face ((t (:foreground "steel blue"))))
   '(agda2-highlight-datatype-face ((t (:inherit font-lock-type-face))))
