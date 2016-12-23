@@ -1,0 +1,1 @@
+ansible-playbook -v -i local provision.yml --ask-sudo-pass

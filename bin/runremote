@@ -1,0 +1,1 @@
+ansible-playbook -v -i remove provision.yml --ask-sudo-pass
