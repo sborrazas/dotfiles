@@ -56,6 +56,7 @@
         path: "/opt/vagrant"
       - package_name: "emacs"
         app_name: "Emacs"
+        path: "/Applications/Emacs.app"
       - package_name: "transmission"
         app_name: "Transmission"
       - package_name: "java"
