@@ -20,4 +20,4 @@
     accept_hostkey: True
     force: False
     update: False
-  with_items: repositories
+  with_items: "{{ repositories }}"
