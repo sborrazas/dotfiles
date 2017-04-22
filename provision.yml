@@ -74,5 +74,3 @@
       - package_name: "heroku-toolbelt"
         app_name: "Heroku Toolbelt"
         path: "/usr/local/heroku"
-      - package_name: "brave"
-        app_name: "Brave"
