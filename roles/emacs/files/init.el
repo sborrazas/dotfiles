@@ -416,7 +416,7 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "M-= M-u") (lambda () (interactive) (insert-char ?ú)))
 (global-set-key (kbd "M-= M-N") (lambda () (interactive) (insert-char ?Ñ)))
 (global-set-key (kbd "M-= M-n") (lambda () (interactive) (insert-char ?ñ)))
-(global-set-key (kbd "M-= M--") (lambda () (interactive) (insert-char ?—)))
+(global-set-key (kbd "M-= M--") (lambda () (interactive) (insert-char ?–)))
 
 ;; Agda
 (load-file (let ((coding-system-for-read 'utf-8))
