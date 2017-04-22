@@ -12,6 +12,9 @@
                       web-mode
                       scala-mode
                       erc-terminal-notifier
+                      tuareg
+                      utop
+                      merlin
                       multiple-cursors))
 
 (require 'package)
@@ -477,3 +480,15 @@ point reaches the beginning or end of the buffer, stop there."
   (remove-hook 'after-change-functions 'bline-minor-mode--uate t))
 
 (add-hook 'prog-mode-hook 'bline-minor-mode--insin)
+
+;; OCaml & utop configuration
+(add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+(setq auto-mode-alist
+      (append '(("\\.ml[ily]?$" . tuareg-mode)
+                ("\\.topml$" . tuareg-mode))
+              auto-mode-alist))
+(autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
+(add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
+(add-hook 'tuareg-mode-hook 'merlin-mode)
+(setq merlin-use-auto-complete-mode t)
+(setq merlin-error-after-save nil)
