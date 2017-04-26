@@ -12,14 +12,14 @@
   file:
     state: directory
     path: "/opt"
-  sudo: True
+  become: True
 
 - name: cask directory writable
   file:
     state: directory
     path: "/opt/homebrew-cask"
     owner: "{{ user }}"
-  sudo: True
+  become: True
 
 - name: homebrew up to date
   homebrew:

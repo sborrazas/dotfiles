@@ -2,7 +2,9 @@
   easy_install:
     name: pip
     state: latest
+  become: True
 
 - name: virtualenv installed
   pip:
     name: virtualenv
+  become: True
