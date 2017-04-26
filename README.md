@@ -32,7 +32,7 @@ This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
   this, go to "System Preferences", "Sharing", "Remote Login" and allow
   "Administrators". Make sure you turn this off after the provisioning is over.
 * Also, make sure there's no need for a password prompt for sudo commands. To do
-  this add `%{{ user }} ALL=(ALL) NOPASSWD:ALL` through `sudo visudo`.
+  this add `{{ user }} ALL=(ALL) NOPASSWD:ALL` through `sudo visudo`.
 * Run `ansible-playbook -v -i remote provision.yml`  in this directory.
 
 ### Notes
