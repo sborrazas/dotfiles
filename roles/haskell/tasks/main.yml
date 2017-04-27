@@ -21,11 +21,11 @@
 - name: agda standard libs exist
   git:
     repo: "https://github.com/agda/agda-stdlib.git"
-    dest: "{{ home_dir }}/.agda-libs"
+    dest: "{{ agda_libs_dir }}"
     accept_hostkey: True
 
 - name: agda standard libs dependencies met
   shell: cabal install
   args:
-    chdir: "{{ home_dir }}/.agda-libs/ffi"
-    creates: "{{ home_dir }}/.agda-libs/ffi/dist"
+    chdir: "{{ agda_libs_dir }}"
+    creates: "{{ agda_libs_dir }}/ffi/dist"

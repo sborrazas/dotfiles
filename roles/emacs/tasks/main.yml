@@ -14,8 +14,8 @@
     path: "{{ home_dir }}/.logs"
 
 - name: emacs init file exists
-  copy:
-    src: "init.el"
+  template:
+    src: "init.el.j2"
     dest: "{{ home_dir }}/.emacs.d/init.el"
 
 - name: emacs config file exists

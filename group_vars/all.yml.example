@@ -1,3 +1,5 @@
+agda_libs_dir: "{{ home_dir }}/.agda-libs"
+work_dir: "{{ home_dir }}/work"
 repositories:
   - name: sborrazas/dotfiles
     path: dotfiles

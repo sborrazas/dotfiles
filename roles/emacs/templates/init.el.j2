@@ -330,7 +330,7 @@ point reaches the beginning or end of the buffer, stop there."
      (set-face-background 'magit-item-highlight "black")))
 (put 'scroll-left 'disabled nil)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
-(setq magit-repo-dirs '("~/work"))
+(setq magit-repo-dirs '("{{ work_dir }}"))
 
 ;; expand-region
 ;; This will select the current word first, then the current block,
@@ -388,7 +388,7 @@ point reaches the beginning or end of the buffer, stop there."
   (wg-create-workgroup project-name)
   (split-window-right)
   (switch-window)
-  (magit-status (convert-standard-filename "~/work")))
+  (magit-status (convert-standard-filename "{{ work_dir }}")))
 
 (defun load-irc-workgroup () ;; TODO: Split the window between Freenode and CB
   "Connect to IRC"
@@ -422,7 +422,7 @@ point reaches the beginning or end of the buffer, stop there."
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
 
-(setq agda2-program-args '("-i" "/Users/sborrazas/.agda-libs/src"))
+(setq agda2-program-args '("-i" "{{ agda_libs_dir }}/src"))
 (custom-set-faces
   '(wg-mode-line-face ((t (:foreground "steel blue"))))
   '(agda2-highlight-datatype-face ((t (:inherit font-lock-type-face))))
@@ -452,7 +452,7 @@ point reaches the beginning or end of the buffer, stop there."
    (list
     (let ((line-column (or whitespace-line-column fill-column)))
       (format
-       "^\\([^\t\n]\\{%s\\}\\|[^\t\n]\\{0,%s\\}\t\\)\\{%d\\}%s\\(.+\\)$"
+       "{{ "^\\([^\t\n]\\{%s\\}\\|[^\t\n]\\{0,%s\\}\t\\)\\{%d\\}%s\\(.+\\)$" }}"
        whitespace-tab-width
        (1- whitespace-tab-width)
        (/ line-column whitespace-tab-width)
@@ -461,7 +461,7 @@ point reaches the beginning or end of the buffer, stop there."
        (let ((rem (% 84 whitespace-tab-width)))
          (if (zerop rem)
              ""
-           (format ".\\{%d\\}" rem)))))
+           (format "{{ ".\\{%d\\}" }}" rem)))))
     0 ; whole line
     whitespace-line t)))
 
