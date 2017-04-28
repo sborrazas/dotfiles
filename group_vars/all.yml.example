@@ -1,4 +1,6 @@
 agda_libs_dir: "{{ home_dir }}/.agda-libs"
+kerl_dir: "{{ home_dir }}/.kerl"
+default_erlang_version: "19.3"
 work_dir: "{{ home_dir }}/work"
 repositories:
   - name: sborrazas/dotfiles

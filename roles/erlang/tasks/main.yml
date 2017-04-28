@@ -2,14 +2,14 @@
 - name: erlang 19.3 version added as a build
   shell: "kerl build 19.3 19.3"
   args:
-    creates: "{{ home_dir }}/.kerl/builds/19.3"
+    creates: "{{ kerl_builds_dir }}/builds/{{ default_erlang_version }}"
 
 - name: erlang installation dir exists
   file:
     state: directory
-    path: "{{ home_dir }}/kerl"
+    path: "{{ kerl_installations_dir }}"
 
 - name: erlang 19.3 version installed
-  shell: "kerl install 19.3 {{ home_dir }}/kerl/19.3"
+  shell: "kerl install {{ default_erlang_version }} {{ default_erlang_installation_dir }}"
   args:
-    creates: "{{ home_dir }}/kerl/19.3"
+    creates: "{{ default_erlang_installation_dir }}"
