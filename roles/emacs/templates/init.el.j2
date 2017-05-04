@@ -358,7 +358,7 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'setup-rcirc)
 
 ;; Logs directory
-(setq rcirc-log-directory config-irc-log-directory)
+(setq rcirc-log-directory "{{ irc_logs_directory }}")
 
 ;; Change user info
 (setq rcirc-default-nick "sborrazas")
