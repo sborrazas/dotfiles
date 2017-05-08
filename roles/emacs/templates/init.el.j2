@@ -143,6 +143,8 @@
 (setq visible-bell 1)
 ;; Make monday the first day on the week on the calendar
 (setq calendar-week-start-day 1)
+;; Whitespace tabs
+(setq whitespace-tab-width 2)
 
 ;; Smarter beginning of line
 (defun smarter-move-beginning-of-line (arg)
@@ -421,10 +423,11 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "M-= M--") (lambda () (interactive) (insert-char ?–)))
 
 ;; Agda
-(load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
+;; (load-file (let ((coding-system-for-read 'utf-8))
+;;                 (shell-command-to-string "agda-mode locate")))
+;;
+;; (setq agda2-program-args '("-i" "{{ agda_libs_dir }}/src"))
 
-(setq agda2-program-args '("-i" "{{ agda_libs_dir }}/src"))
 (custom-set-faces
   '(wg-mode-line-face ((t (:foreground "steel blue"))))
   '(agda2-highlight-datatype-face ((t (:inherit font-lock-type-face))))
