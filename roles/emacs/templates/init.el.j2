@@ -16,6 +16,7 @@
                       utop
                       merlin
                       shen-mode
+                      edts
                       multiple-cursors))
 
 (require 'package)
@@ -502,10 +503,6 @@ point reaches the beginning or end of the buffer, stop there."
 (setq exec-path (cons "{{ default_erlang_installation_dir }}/bin" exec-path))
 (require 'erlang-start)
 
-;; Erlang configuration
-(setq load-path (cons
-                 "{{ default_erlang_installation_dir }}/lib/tools-2.9.1/emacs"
-                 load-path))
-(setq erlang-root-dir "{{ default_erlang_installation_dir }}")
-(setq exec-path (cons "{{ default_erlang_installation_dir }}/bin" exec-path))
-(require 'erlang-start)
+;; EDTS
+(setq edts-inhibit-package-check t
+      edts-man-root "{{ home_dir }}/.emacs.d/edts/doc/18.2.1")
