@@ -30,3 +30,5 @@
   excludesfile = ~/.gitignore_global
   autocrlf = input
   editor = emacs
+[push]
+  default = simple
