@@ -1,5 +1,6 @@
 agda_libs_dir: "{{ home_dir }}/.agda-libs"
-kerl_dir: "{{ home_dir }}/.kerl"
+kerl_builds_dir: "{{ home_dir }}/.kerl"
+kerl_installations_dir: "{{ home_dir }}/kerl"
 default_erlang_version: "19.3"
 work_dir: "{{ home_dir }}/work"
 irc_logs_directory: "{{ home_dir }}/.logs"
