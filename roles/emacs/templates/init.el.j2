@@ -500,10 +500,10 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; Erlang configuration
 (setq load-path (cons
-                 "{{ default_erlang_installation_dir }}/lib/tools-2.9.1/emacs"
+                 "{{ erlang_installation_dir }}/lib/tools-2.9.1/emacs"
                  load-path))
-(setq erlang-root-dir "{{ default_erlang_installation_dir }}")
-(setq exec-path (cons "{{ default_erlang_installation_dir }}/bin" exec-path))
+(setq erlang-root-dir "{{ erlang_installation_dir }}")
+(setq exec-path (cons "{{ erlang_installation_dir }}/bin" exec-path))
 (require 'erlang-start)
 
 ;; EDTS

@@ -15,8 +15,6 @@
   vars:
     user: "{{ ansible_env.USER }}"
     home_dir: "{{ ansible_env.HOME }}"
-    hostname: "sebamac"
-    default_erlang_installation_dir: "{{ kerl_installations_dir }}/{{ default_erlang_version }}"
     homebrew_packages:
       - rbenv
       - ruby-build

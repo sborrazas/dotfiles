@@ -1,7 +1,10 @@
+hostname: "sebamac"
 agda_libs_dir: "{{ home_dir }}/.agda-libs"
-kerl_builds_dir: "{{ home_dir }}/.kerl"
-kerl_installations_dir: "{{ home_dir }}/kerl"
-default_erlang_version: "19.3"
+asdf_dir: "{{ home_dir }}/.asdf"
+asdf_bin: "{{ asdf_dir }}/bin/asdf"
+erlang_version: "19.3"
+elixir_version: "1.4.2"
+erlang_installation_dir: "{{ asdf_dir }}/installs/erlang/{{ erlang_version }}"
 work_dir: "{{ home_dir }}/work"
 irc_logs_directory: "{{ home_dir }}/.logs"
 repositories:
