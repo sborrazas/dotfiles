@@ -63,3 +63,8 @@ PATH="$HOME/.node-global/bin:$PATH"
 
 # Cabal (Haskell)
 PATH="$HOME/.cabal/bin:$PATH"
+
+# Keyboard shortcuts for Ubuntu
+if [ -x "$(command -v setxkbmap)" ]; then
+  setxkbmap -layout us -option ctrl:nocaps
+fi
