@@ -326,12 +326,6 @@ point reaches the beginning or end of the buffer, stop there."
 (setq uniquify-buffer-name-style 'forward)
 
 ;; Magit package
-;; Custom magit diff colors
-(eval-after-load 'magit
-  '(progn
-     (set-face-foreground 'magit-diff-add "green3")
-     (set-face-foreground 'magit-diff-del "red3")
-     (set-face-background 'magit-item-highlight "black")))
 (put 'scroll-left 'disabled nil)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
 (setq magit-repo-dirs '("{{ work_dir }}"))
