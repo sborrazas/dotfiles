@@ -502,4 +502,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; EDTS
 (setq edts-inhibit-package-check t
-      edts-man-root "{{ home_dir }}/.emacs.d/edts/doc/18.2.1")
+      edts-man-root "{{ home_dir }}/.emacs.d/edts/doc/{{ erlang_version }}")
+(require 'edts-start)
+
+;; If EDTS won't start, run `make` inside ~/.emacs.d/elpa/edts-<version-number>/
