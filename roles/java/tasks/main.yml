@@ -9,6 +9,6 @@
     creates: "{{ home_dir }}/.jenv/versions/oracle64-1.7.0.75"
 
 - name: set java 8 as default
-  shell: 'jenv global oracle64-1.8.0.05'
+  shell: 'jenv global 1.8'
   args:
     creates: "{{ home_dir }}/.jenv/version"
