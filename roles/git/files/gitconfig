@@ -27,7 +27,7 @@
   old = red bold
   new = green bold
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore
   autocrlf = input
   editor = emacs
 [push]

@@ -12,3 +12,6 @@
 
 # Foreman
 .env
+
+# Erlang
+*.beam
