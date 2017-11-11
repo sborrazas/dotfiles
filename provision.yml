@@ -20,8 +20,6 @@
       - ruby-build
       - python3
       - ansible
-      - httpie
-      - hub
       - node
       - terminal-notifier
       - ghc
@@ -31,7 +29,7 @@
       - sbt
       - ocaml
       - opam
-      - kerl
+      - asdf
     osx_apps:
       - package_name: "google-chrome"
         app_name: "Google Chrome"

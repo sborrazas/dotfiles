@@ -18,8 +18,7 @@ This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
 * Install pip `sudo easy_install pip`.
 * Install Ansible `sudo pip install ansible`.
 * Get this repo directory into the machine somehow.
-* Run `ansible-playbook -v -i local provision.yml --ask-sudo-pass` in this
-  directory.
+* Run `ansible-playbook -v -i local provision.yml` in this directory.
 
 ## Remote provision
 
@@ -39,7 +38,7 @@ This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
 
 If the remote host has a password to connect through SSH you should also append
 the following parameters to the `ansible-playbook` command:
-`--ask-pass --ask-sudo-pass -c paramiko`.
+`--ask-pass -c paramiko`.
 
 ## Post provision
 

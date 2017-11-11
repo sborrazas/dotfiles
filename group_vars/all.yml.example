@@ -1,14 +1,8 @@
 hostname: "sebamac"
 agda_libs_dir: "{{ home_dir }}/.agda-libs"
-asdf_dir: "{{ home_dir }}/.asdf"
-asdf_bin: "{{ asdf_dir }}/bin/asdf"
-erlang_version: "19.3"
-elixir_version: "1.4.2"
+asdf_dir: "/usr/local/opt/asdf" # Linux: {{ home_dir }}/.asdf | OSX: /usr/local/opt/asdf
+erlang_version: "20.1"
 erlang_installation_dir: "{{ asdf_dir }}/installs/erlang/{{ erlang_version }}"
 work_dir: "{{ home_dir }}/work"
 irc_logs_directory: "{{ home_dir }}/.logs"
-repositories:
-  - name: sborrazas/dotfiles
-    path: dotfiles
-  - name: sborrazas/armadillo
-  - name: sborrazas/organ
+repositories: []

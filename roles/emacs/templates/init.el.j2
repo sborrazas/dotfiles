@@ -329,6 +329,7 @@ point reaches the beginning or end of the buffer, stop there."
 (put 'scroll-left 'disabled nil)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
 (setq magit-repo-dirs '("{{ work_dir }}"))
+(setq magit-log-section-commit-count 0)
 
 ;; expand-region
 ;; This will select the current word first, then the current block,
