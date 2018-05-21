@@ -501,6 +501,7 @@ point reaches the beginning or end of the buffer, stop there."
                  load-path))
 (setq erlang-root-dir "{{ erlang_installation_dir }}")
 (setq exec-path (cons "{{ erlang_installation_dir }}/bin" exec-path))
+(setq erlang-man-root-dir "{{ erlang_installation_dir}}/lib/erlang")
 (setq erlang-indent-level 2)
 (require 'erlang-start)
 
