@@ -12,7 +12,6 @@
       tags:
         - osx
     - java
-    - mit-scheme
     - python
     - erlang
   vars:
