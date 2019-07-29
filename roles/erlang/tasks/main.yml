@@ -1,5 +1,28 @@
 ---
-- name: erlang 19.3 version added as a build
-  shell: "asdf install erlang {{ erlang_version }}"
+- name: ubuntu required packages installed
+  apt:
+    name:
+      - autoconf
+  become: True
+  tags:
+    - ubuntu
+
+- name: install asdf for ubuntu
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: "{{ asdf_dir }}"
+  tags:
+    - ubuntu
+- name: add erlang asdf plugin
+  shell: "{{ asdf_dir }}/bin/asdf plugin-add erlang"
+  args:
+    creates: "{{ erlang_plugin_dir }}"
+- name: erlang version added
+  shell: "{{ asdf_dir }}/bin/asdf install erlang {{ erlang_version }}"
   args:
     creates: "{{ erlang_installation_dir }}"
+
+- name: erlang version added as default
+  template:
+    src: ".tool-versions.j2"
+    dest: "{{ home_dir }}/.tool-versions"
