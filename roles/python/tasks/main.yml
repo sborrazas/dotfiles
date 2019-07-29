@@ -1,8 +1,18 @@
+- name: ubuntu required packages installed
+  apt:
+    name:
+      - python-setuptools
+      - python-pip
+  become: True
+  tags:
+    - ubuntu
 - name: pip installed
   easy_install:
     name: pip
     state: latest
   become: True
+  tags:
+    - osx
 
 - name: virtualenv installed
   pip:

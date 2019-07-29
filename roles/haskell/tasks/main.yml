@@ -1,3 +1,9 @@
+- name: ubuntu required packages installed
+  apt:
+    name: "cabal-install"
+  become: True
+  tags:
+    - ubuntu
 - name: cabal updated
   shell: cabal update
   args:
@@ -16,7 +22,6 @@
     - alex
     - happy
     - Agda
-    - bnfc
 
 - name: agda standard libs exist
   git:

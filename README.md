@@ -18,7 +18,7 @@ This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
 * Install pip `sudo easy_install pip`.
 * Install Ansible `sudo pip install ansible`.
 * Get this repo directory into the machine somehow.
-* Run `ansible-playbook -v -i local provision.yml` in this directory.
+* Run `ansible-playbook -v --ask-become-pass --skip-tags=osx -i local provision.yml` in this directory.
 
 ## Remote provision
 

@@ -3,3 +3,19 @@
   args:
     creates: "{{ item.path | default(home_dir + '/Applications/' + item.app_name + '.app') }}"
   with_items: "{{ osx_apps }}"
+  tags:
+    - osx
+- name: Ubuntu packages installed
+  apt:
+    name: "{{ ubuntu_packages }}"
+  become: True
+  tags:
+    - ubuntu
+- name: Ubuntu snap apps installed
+  snap:
+    name: "{{ item.snap_name }}"
+    classic: "{{ item.classic }}"
+  with_items: "{{ ubuntu_snaps }}"
+  tags:
+    - ubuntu
+  become: True

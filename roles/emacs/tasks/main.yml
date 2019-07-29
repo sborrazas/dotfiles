@@ -22,3 +22,10 @@
   copy:
     src: "config.el"
     dest: "{{ home_dir }}/.emacs.d/config.el"
+
+- name: emacs bin exists
+  copy:
+    src: bin/emacs
+    dest: "{{ home_dir }}/.bin/emacs"
+  tags:
+    - osx

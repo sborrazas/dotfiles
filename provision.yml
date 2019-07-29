@@ -2,12 +2,15 @@
   roles:
     - common
     - git
-    - homebrew
-    - rbenv
+    - role: homebrew
+      tags:
+        - osx
     - apps
     - haskell
     - emacs
-    - osx
+    - role: osx
+      tags:
+        - osx
     - java
     - mit-scheme
     - python
@@ -30,6 +33,15 @@
       - ocaml
       - opam
       - asdf
+    ubuntu_packages:
+      - git
+      - emacs
+      - make
+    ubuntu_snaps:
+      - snap_name: telegram-desktop
+        classic: False
+      - snap_name: slack
+        classic: True
     osx_apps:
       - package_name: "google-chrome"
         app_name: "Google Chrome"
