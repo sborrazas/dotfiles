@@ -17,6 +17,9 @@
                       merlin
                       shen-mode
                       edts
+                      company-coq
+                      elixir-mode
+                      ;; heml
                       multiple-cursors))
 
 (require 'package)
@@ -497,11 +500,11 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; Erlang configuration
 (setq load-path (cons
-                 "{{ erlang_installation_dir }}/lib/tools-2.9.1/emacs"
+                 "{{ erlang_version_dir }}/lib/tools-2.9.1/emacs"
                  load-path))
-(setq erlang-root-dir "{{ erlang_installation_dir }}")
-(setq exec-path (cons "{{ erlang_installation_dir }}/bin" exec-path))
-(setq erlang-man-root-dir "{{ erlang_installation_dir}}/lib/erlang")
+(setq erlang-root-dir "{{ erlang_version_dir }}")
+(setq exec-path (cons "{{ erlang_version_dir }}/bin" exec-path))
+(setq erlang-man-root-dir "{{ erlang_version_dir}}/lib/erlang")
 (setq erlang-indent-level 2)
 (require 'erlang-start)
 
@@ -515,3 +518,16 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Shen
 (require 'shen-mode)
 (require 'inf-shen)
+
+;; Proof General & Coq
+(load "{{ home_dir }}/.emacs.d/lisp/PG/generic/proof-site")
+(add-hook 'coq-mode-hook #'company-coq-mode)
+
+;; Unfill paragraph
+(defun unfill-paragraph (&optional region)
+  "Takes a multi-line paragraph and makes it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max))
+        ;; This would override `fill-column' if it's an integer.
+        (emacs-lisp-docstring-fill-column t))
+    (fill-paragraph nil region)))
