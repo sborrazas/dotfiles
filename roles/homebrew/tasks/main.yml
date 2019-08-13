@@ -3,11 +3,6 @@
   args:
     creates: "/usr/local/bin/brew"
 
-- name: sborrazas repository added
-  shell: "brew tap sborrazas/casks"
-  args:
-    creates: "/usr/local/Homebrew/Library/Taps/sborrazas"
-
 - name: opt directory exists
   file:
     state: directory
@@ -27,6 +22,5 @@
 
 - name: homebrew packages installed
   homebrew:
-    name: "{{ item }}"
+    name: "{{ homebrew_packages }}"
     state: present
-  with_items: "{{ homebrew_packages }}"
