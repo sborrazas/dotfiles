@@ -67,3 +67,6 @@
         app_name: "Dropbox"
       - package_name: "the-unarchiver"
         app_name: "The Unarchiver"
+      - package_name: "visual-studio-code"
+        app_name: "Visual Studio Code"
+        path: "/Applications/Visual Studio Code.app"
