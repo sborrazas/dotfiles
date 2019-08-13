@@ -1,8 +1,9 @@
 hostname: "sebamac"
 agda_libs_dir: "{{ home_dir }}/.agda-libs"
-asdf_dir: "/usr/local/opt/asdf" # Linux: {{ home_dir }}/.asdf | OSX: /usr/local/opt/asdf
+asdf_bin: "/usr/local/opt/asdf/bin/asdf" # Linux: {{ home_dir }}/.asdf/bin/asdf
+asdf_dir: "{{ home_dir }}/.asdf"
 erlang_version: "22.0.7"
-erlang_plugin_dir: "{{ asdf_dir }}/installs/erlang"
+erlang_plugin_dir: "{{ asdf_dir }}/plugins/erlang"
 erlang_version_dir: "{{ erlang_plugin_dir }}/{{ erlang_version }}"
 work_dir: "{{ home_dir }}/work"
 irc_logs_directory: "{{ home_dir }}/.logs"

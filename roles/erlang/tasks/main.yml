@@ -14,13 +14,13 @@
   tags:
     - ubuntu
 - name: add erlang asdf plugin
-  shell: "{{ asdf_dir }}/bin/asdf plugin-add erlang"
+  shell: "{{ asdf_bin }} plugin-add erlang"
   args:
     creates: "{{ erlang_plugin_dir }}"
 - name: erlang version added
-  shell: "{{ asdf_dir }}/bin/asdf install erlang {{ erlang_version }}"
+  shell: "{{ asdf_bin }} install erlang {{ erlang_version }}"
   args:
-    creates: "{{ erlang_installation_dir }}"
+    creates: "{{ erlang_version_dir }}"
 
 - name: erlang version added as default
   template:
