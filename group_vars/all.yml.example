@@ -1,6 +1,6 @@
 hostname: "sebamac"
 agda_libs_dir: "{{ home_dir }}/.agda-libs"
-asdf_bin: "/usr/local/opt/asdf/bin/asdf" # Linux: {{ home_dir }}/.asdf/bin/asdf
+asdf_installation_dir: "/usr/local/opt/asdf" # Linux: {{ home_dir }}/.asdf
 asdf_dir: "{{ home_dir }}/.asdf"
 erlang_version: "22.0.7"
 erlang_plugin_dir: "{{ asdf_dir }}/plugins/erlang"
