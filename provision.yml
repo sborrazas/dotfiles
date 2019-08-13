@@ -18,8 +18,6 @@
     user: "{{ ansible_env.USER }}"
     home_dir: "{{ ansible_env.HOME }}"
     homebrew_packages:
-      - rbenv
-      - ruby-build
       - python3
       - ansible
       - node
@@ -27,11 +25,11 @@
       - ghc
       - cabal-install
       - gmp
-      - jenv
       - sbt
       - ocaml
       - opam
       - asdf
+      - heroku
     ubuntu_packages:
       - git
       - emacs
@@ -48,10 +46,6 @@
         app_name: "Telegram"
       - package_name: "caffeine"
         app_name: "Caffeine"
-      - package_name: "cloud"
-        app_name: "CloudApp"
-      - package_name: "firefox"
-        app_name: "Firefox"
       - package_name: "vlc"
         app_name: "VLC"
       - package_name: "virtualbox"
@@ -73,8 +67,3 @@
         app_name: "Dropbox"
       - package_name: "the-unarchiver"
         app_name: "The Unarchiver"
-      - package_name: "mozart"
-        app_name: "Mozart"
-      - package_name: "heroku-toolbelt"
-        app_name: "Heroku Toolbelt"
-        path: "/usr/local/heroku"
