@@ -30,6 +30,7 @@
       - opam
       - asdf
       - heroku
+      - fd
     ubuntu_packages:
       - git
       - emacs
