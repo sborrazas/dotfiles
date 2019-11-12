@@ -8,3 +8,5 @@ erlang_version_dir: "{{ erlang_plugin_dir }}/{{ erlang_version }}"
 work_dir: "{{ home_dir }}/work"
 irc_logs_directory: "{{ home_dir }}/.logs"
 repositories: []
+keybase_user: "sborrazas"
+keybase_key_id: "seba.borrazas@gmail.com"

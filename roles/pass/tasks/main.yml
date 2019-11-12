@@ -1,0 +1,18 @@
+- name: create gpg config file
+  copy:
+    content: |
+      personal-digest-preferences SHA256
+      cert-digest-algo SHA256
+      default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+    dest: "{{ home_dir }}/.gnupg/gpg.conf"
+
+- name: set pass pgp key_id
+  copy:
+    content: "{{ keybase_key_id }}"
+    dest: "{{ home_dir }}/.password-store/.gpg-id"
+
+- name: Import GPG key from keybase
+  gpg:
+    keybase_user: "{{ keybase_user }}"
+    state: present
+    key_id: "{{ keybase_key_id }}"
