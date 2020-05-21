@@ -66,3 +66,12 @@ PATH="$HOME/.cabal/bin:$PATH"
 
 # ASDF
 source {{ asdf_installation_dir }}/asdf.sh
+
+# Allow GPG when using tty
+export GPG_TTY=$(tty)
+
+# Disable the OSX zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Use Documents directory for pass keys
+export PASSWORD_STORE_DIR=$HOME/Documents/.password-store
