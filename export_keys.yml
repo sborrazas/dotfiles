@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+    - name: Export public GPG key
+      shell: |
+        gpg --export -a >"{{ home_dir }}/Documents/public.key"
+
+    - name: Export private GPG key
+      shell: |
+        gpg --export -a >"{{ home_dir }}/Documents/private.key"
+
+  vars:
+    home_dir: "{{ ansible_env.HOME }}"

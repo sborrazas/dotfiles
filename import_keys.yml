@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+    - name: Import public GPG key
+      shell: |
+        gpg --import "{{ home_dir }}/Documents/public.key"
+
+    - name: Import private GPG key
+      shell: |
+        gpg --allow-secret-key-import --import "{{ home_dir }}/Documents/private.key"
+
+  vars:
+    home_dir: "{{ ansible_env.HOME }}"
