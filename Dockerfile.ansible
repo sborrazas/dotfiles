@@ -1,0 +1,13 @@
+FROM ubuntu:xenial
+
+# Install ansible and ansible deps
+RUN apt-get -y update && \
+    apt-get install -y apt-utils software-properties-common && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get -y update && \
+    apt-get install -y python3.6 python3-pip openssh-client vim
+
+# Upgrade pip
+RUN python3.6 -m pip install --upgrade pip
+
+RUN pip install ansible
