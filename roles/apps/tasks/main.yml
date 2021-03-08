@@ -1,5 +1,5 @@
 - name: OSX apps installed
-  shell: brew cask install {{ item.package_name }}
+  shell: brew install --cask {{ item.package_name }}
   args:
     creates: "{{ item.path | default(home_dir + '/Applications/' + item.app_name + '.app') }}"
   with_items: "{{ osx_apps }}"
