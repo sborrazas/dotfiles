@@ -3,30 +3,20 @@
                       expand-region
                       magit
                       ido
-                      haml-mode
                       sass-mode
-                      coffee-mode
-                      haskell-mode
                       yaml-mode
                       smex
                       web-mode
-                      scala-mode
-                      erc-terminal-notifier
-                      tuareg
-                      utop
-                      merlin
                       shen-mode
                       edts
-                      company-coq
                       elixir-mode
-                      ;; heml
                       multiple-cursors))
 
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -359,19 +349,6 @@ point reaches the beginning or end of the buffer, stop there."
 (if (menu-bar-mode)
     (menu-bar-mode -1))
 
-;; rcirc
-(require 'setup-rcirc)
-
-;; Logs directory
-(setq rcirc-log-directory "{{ irc_logs_directory }}")
-
-;; Change user info
-(setq rcirc-default-nick "sborrazas")
-(setq rcirc-default-user-name "sborrazas")
-(setq rcirc-default-full-name "Sebastian Borrazas")
-(setq rcirc-default-port 6667)
-(setq rcirc-fill-column 80)
-
 ;; Workgroups
 (require 'workgroups)
 (setq wg-query-for-save-on-emacs-exit nil)
@@ -405,9 +382,6 @@ point reaches the beginning or end of the buffer, stop there."
   (switch-window)
   (switch-to-buffer "*irc.freenode.net*"))
 
-;; Haskell
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation-mode)
-
 ;; Special characters
 (global-unset-key (kbd "M-="))
 (global-set-key (kbd "M-= M-A") (lambda () (interactive) (insert-char ?Á)))
@@ -423,27 +397,6 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "M-= M-N") (lambda () (interactive) (insert-char ?Ñ)))
 (global-set-key (kbd "M-= M-n") (lambda () (interactive) (insert-char ?ñ)))
 (global-set-key (kbd "M-= M--") (lambda () (interactive) (insert-char ?–)))
-
-;; Agda
-;; (load-file (let ((coding-system-for-read 'utf-8))
-;;                 (shell-command-to-string "agda-mode locate")))
-;;
-;; (setq agda2-program-args '("-i" "{{ agda_libs_dir }}/src"))
-
-(custom-set-faces
-  '(wg-mode-line-face ((t (:foreground "steel blue"))))
-  '(agda2-highlight-datatype-face ((t (:inherit font-lock-type-face))))
-  '(agda2-highlight-field-face ((t (:foreground "#ad7fa8"))))
-  '(agda2-highlight-function-face ((t (:inherit font-lock-function-name-face))))
-  '(agda2-highlight-inductive-constructor-face ((t (:inherit font-lock-variable-name-face))))
-  '(agda2-highlight-keyword-face ((t (:inherit font-lock-keyword-face))))
-  '(agda2-highlight-module-face ((t (:inherit font-lock-builtin-face))))
-  '(agda2-highlight-number-face ((t (:inherit font-lock-constant-face))))
-  '(agda2-highlight-postulate-face ((t (:inherit font-lock-type-face))))
-  '(agda2-highlight-primitive-face ((t (:inherit font-lock-type-face))))
-  '(agda2-highlight-primitive-type-face ((t (:inherit font-lock-type-face))))
-  '(agda2-highlight-record-face ((t (:inherit font-lock-type-face))))
-  '(agda2-highlight-string-face ((t (:inherit font-lock-string-face)))))
 
 ;; JSX
 (setq jsx-indent-level 2)
@@ -499,23 +452,6 @@ point reaches the beginning or end of the buffer, stop there."
 (add-hook 'tuareg-mode-hook 'merlin-mode)
 (setq merlin-use-auto-complete-mode t)
 (setq merlin-error-after-save nil)
-
-;; Erlang configuration
-(setq load-path (cons
-                 "{{ erlang_version_dir }}/lib/tools-2.9.1/emacs"
-                 load-path))
-(setq erlang-root-dir "{{ erlang_version_dir }}")
-(setq exec-path (cons "{{ erlang_version_dir }}/bin" exec-path))
-(setq erlang-man-root-dir "{{ erlang_version_dir}}/lib/erlang")
-(setq erlang-indent-level 2)
-(require 'erlang-start)
-
-;; EDTS
-(setq edts-inhibit-package-check t
-      edts-man-root "{{ home_dir }}/.emacs.d/edts/doc/{{ erlang_version }}")
-(require 'edts-start)
-
-;; If EDTS won't start, run `make` inside ~/.emacs.d/elpa/edts-<version-number>/
 
 ;; Shen
 (require 'shen-mode)
