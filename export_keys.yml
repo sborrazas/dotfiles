@@ -6,7 +6,7 @@
 
     - name: Export private GPG key
       shell: |
-        gpg --export -a >"{{ home_dir }}/Documents/private.key"
+        gpg --export-secret-key -a >"{{ home_dir }}/Documents/private.key"
 
   vars:
     home_dir: "{{ ansible_env.HOME }}"

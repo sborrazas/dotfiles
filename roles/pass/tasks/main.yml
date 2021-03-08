@@ -1,3 +1,8 @@
+- name: create gnupg directory
+  file:
+    path: "{{ home_dir }}/.gnupg/"
+    state: directory
+
 - name: create gpg config file
   copy:
     content: |
@@ -9,7 +14,8 @@
 - name: set pass pgp key_id
   copy:
     content: "{{ keybase_key_id }}"
-    dest: "{{ home_dir }}/.password-store/.gpg-id"
+    dest: "{{ home_dir }}/Documents/.password-store/.gpg-id"
+    mode: '0700'
 
 - name: Import GPG key from keybase
   gpg:
