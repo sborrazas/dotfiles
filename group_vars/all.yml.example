@@ -1,12 +1,5 @@
 hostname: "sebamac"
-agda_libs_dir: "{{ home_dir }}/.agda-libs"
-asdf_installation_dir: "/usr/local/opt/asdf" # Linux: {{ home_dir }}/.asdf
-asdf_dir: "{{ home_dir }}/.asdf"
-erlang_version: "22.0.7"
-erlang_plugin_dir: "{{ asdf_dir }}/plugins/erlang"
-erlang_version_dir: "{{ erlang_plugin_dir }}/{{ erlang_version }}"
 work_dir: "{{ home_dir }}/work"
-irc_logs_directory: "{{ home_dir }}/.logs"
 repositories: []
 keybase_user: "sborrazas"
 keybase_key_id: "seba.borrazas@gmail.com"

@@ -6,14 +6,10 @@
       tags:
         - osx
     - apps
-    - haskell
     - emacs
     - role: osx
       tags:
         - osx
-    - java
-    - python
-    - erlang
     - pass
   vars:
     user: "{{ ansible_env.USER }}"
