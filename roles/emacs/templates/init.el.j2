@@ -457,10 +457,6 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'shen-mode)
 (require 'inf-shen)
 
-;; Proof General & Coq
-(load "{{ home_dir }}/.emacs.d/lisp/PG/generic/proof-site")
-(add-hook 'coq-mode-hook #'company-coq-mode)
-
 ;; Unfill paragraph
 (defun unfill-paragraph (&optional region)
   "Takes a multi-line paragraph and makes it into a single line of text."
