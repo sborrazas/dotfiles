@@ -142,6 +142,8 @@
 (set-fill-column 80)
 ;; Ask for confirmation when leaving Emacs
 (setq confirm-kill-emacs 'yes-or-no-p)
+;; Default directory
+(setq default-directory "{{ work_dir }}")
 
 ;; Smarter beginning of line
 (defun smarter-move-beginning-of-line (arg)
