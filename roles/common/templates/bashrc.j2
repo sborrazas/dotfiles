@@ -16,7 +16,9 @@ else
   SEPARATOR="➜";
 fi
 
-export PS1="\[$(tput bold)\]\[$(tput setaf 5)\]$SEPARATOR \[$(tput setaf 6)\]\w\[$(tput setaf 3)\] \$(parse_git_branch)\[$(tput sgr0)\]"
+if [[ -t 1 ]]; then
+  export PS1="\[$(tput bold)\]\[$(tput setaf 5)\]$SEPARATOR \[$(tput setaf 6)\]\w\[$(tput setaf 3)\] \$(parse_git_branch)\[$(tput sgr0)\]"
+fi
 
 # Add less viewer some options by default
 export LESS='-i-r-P%f(%i/%m) Line %lt/%L'
@@ -46,6 +48,3 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Use Documents directory for pass keys
 export PASSWORD_STORE_DIR=$HOME/Documents/.password-store
-
-# pass opts
-export PASSWORD_STORE_DIR=~/Documents/.password-store
