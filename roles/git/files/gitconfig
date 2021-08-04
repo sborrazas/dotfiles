@@ -32,3 +32,5 @@
   editor = emacs
 [push]
   default = simple
+[init]
+  defaultBranch = master
