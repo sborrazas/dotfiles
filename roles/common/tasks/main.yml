@@ -23,3 +23,19 @@
   template:
     src: ansible.cfg.j2
     dest: "{{ home_dir }}/.ansible.cfg"
+
+- name: Ubuntu updated
+  apt:
+    update_cache: True
+    force_apt_get: True
+  tags:
+    - ubuntu
+  become: True
+
+- name: Ubuntu upgraded
+  apt:
+    upgrade: dist
+    force_apt_get: True
+  tags:
+    - ubuntu
+  become: True

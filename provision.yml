@@ -19,15 +19,31 @@
       - keybase
       - pass
       - tmux
+    ubuntu_repos:
+      - "ppa:numix/ppa"
     ubuntu_packages:
       - git
       - emacs
       - make
+      - pass
+      - vlc
+      - synaptic
+      - gnome-shell-extensions
+      - ubuntu-restricted-extras
+      - preload
+      - numix-gtk-theme
+      - numix-icon-theme-circle
+      - bleachbit
+      - xkeycaps
     ubuntu_snaps:
       - snap_name: telegram-desktop
         classic: False
       - snap_name: slack
         classic: True
+      - snap_name: spotify
+        classic: False
+      - snap_name: brave
+        classic: False
     osx_apps:
       - package_name: "telegram"
         app_name: "Telegram"
