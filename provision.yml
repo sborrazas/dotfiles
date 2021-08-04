@@ -36,6 +36,7 @@
       - numix-gtk-theme
       - bleachbit
       - xkeycaps
+      - unison
     ubuntu_snaps:
       - snap_name: telegram-desktop
         classic: False
