@@ -34,7 +34,6 @@
       - ubuntu-restricted-extras
       - preload
       - numix-gtk-theme
-      - numix-icon-theme-circle
       - bleachbit
       - xkeycaps
     ubuntu_snaps:
