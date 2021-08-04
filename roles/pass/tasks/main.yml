@@ -22,3 +22,12 @@
     keybase_user: "{{ keybase_user }}"
     state: present
     key_id: "{{ keybase_key_id }}"
+
+- name: Import public GPG key
+  shell: |
+    gpg --import "{{ home_dir }}/Documents/gpg-public.gpg"
+
+- name: Import private GPG key
+  shell: |
+    gpg --allow-secret-key-import --import "{{ home_dir }}/Documents/gpg-private.gpg"
+

@@ -2,11 +2,11 @@
   tasks:
     - name: Import public GPG key
       shell: |
-        gpg --import "{{ home_dir }}/Documents/public.key"
+        gpg --import "{{ home_dir }}/Documents/gpg-public.gpg"
 
     - name: Import private GPG key
       shell: |
-        gpg --allow-secret-key-import --import "{{ home_dir }}/Documents/private.key"
+        gpg --allow-secret-key-import --import "{{ home_dir }}/Documents/gpg-private.gpg"
 
   vars:
     home_dir: "{{ ansible_env.HOME }}"
