@@ -1,0 +1,8 @@
+- name: xmodmap copied
+  copy:
+    src: Xmodmap
+    dest: "{{ home_dir }}/.Xmodmap"
+- name: xkbmap copied
+  copy:
+    src: xkbmap
+    dest: "{{ home_dir }}/.xkbmap"
