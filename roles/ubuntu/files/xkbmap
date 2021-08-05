@@ -1,5 +1,5 @@
 xkb_keymap {
-xkb_keycodes "evdev+aliases(qwerty)" {
+xkb_keycodes "evdev_aliases(qwerty)" {
     minimum = 8;
     maximum = 255;
      <ESC> = 9;
@@ -389,7 +389,6 @@ xkb_types "complete" {
     };
     type "LOCAL_EIGHT_LEVEL" {
         modifiers= Shift+Lock+Control+LevelThree;
-        map[Shift+Lock]= Level1;
         map[Shift]= Level2;
         map[Lock]= Level2;
         map[LevelThree]= Level3;
@@ -619,7 +618,6 @@ xkb_types "complete" {
     };
     type "FOUR_LEVEL_MIXED_KEYPAD" {
         modifiers= Shift+NumLock+LevelThree;
-        map[Shift+NumLock]= Level1;
         map[NumLock]= Level2;
         map[Shift]= Level2;
         map[LevelThree]= Level3;
@@ -1178,7 +1176,7 @@ xkb_compatibility "complete" {
     };
 };
 
-xkb_symbols "pc+us+us:2+inet(evdev)" {
+xkb_symbols "pc_us_us_2_inet(evdev)" {
 
     name[group1]="English (US)";
     name[group2]="English (US)";
@@ -1207,8 +1205,14 @@ xkb_symbols "pc+us+us:2+inet(evdev)" {
         symbols[Group1]= [               w,               W ]
     };
     key <AD03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               e,               E ]
+        type[group1]= "ALPHABETIC",
+        type[group2]= "ONE_LEVEL",
+        type[group3]= "ONE_LEVEL",
+        type[group4]= "ONE_LEVEL",
+        symbols[Group1]= [               e,               E ],
+        symbols[Group2]= [          eacute ],
+        symbols[Group3]= [               e ],
+        symbols[Group4]= [               E ]
     };
     key <AD04> {
         type= "ALPHABETIC",
@@ -1223,16 +1227,34 @@ xkb_symbols "pc+us+us:2+inet(evdev)" {
         symbols[Group1]= [               y,               Y ]
     };
     key <AD07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               u,               U ]
+        type[group1]= "ALPHABETIC",
+        type[group2]= "ONE_LEVEL",
+        type[group3]= "ONE_LEVEL",
+        type[group4]= "ONE_LEVEL",
+        symbols[Group1]= [               u,               U ],
+        symbols[Group2]= [          uacute ],
+        symbols[Group3]= [               u ],
+        symbols[Group4]= [               U ]
     };
     key <AD08> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               i,               I ]
+        type[group1]= "ALPHABETIC",
+        type[group2]= "ONE_LEVEL",
+        type[group3]= "ONE_LEVEL",
+        type[group4]= "ONE_LEVEL",
+        symbols[Group1]= [               i,               I ],
+        symbols[Group2]= [          iacute ],
+        symbols[Group3]= [               i ],
+        symbols[Group4]= [               I ]
     };
     key <AD09> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               o,               O ]
+        type[group1]= "ALPHABETIC",
+        type[group2]= "ONE_LEVEL",
+        type[group3]= "ONE_LEVEL",
+        type[group4]= "ONE_LEVEL",
+        symbols[Group1]= [               o,               O ],
+        symbols[Group2]= [          oacute ],
+        symbols[Group3]= [               o ],
+        symbols[Group4]= [               O ]
     };
     key <AD10> {
         type= "ALPHABETIC",
@@ -1243,8 +1265,14 @@ xkb_symbols "pc+us+us:2+inet(evdev)" {
     key <RTRN> {         [          Return ] };
     key <LCTL> {         [       Control_L ] };
     key <AC01> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               a,               A ]
+        type[group1]= "ALPHABETIC",
+        type[group2]= "ONE_LEVEL",
+        type[group3]= "ONE_LEVEL",
+        type[group4]= "ONE_LEVEL",
+        symbols[Group1]= [               a,               A ],
+        symbols[Group2]= [          aacute ],
+        symbols[Group3]= [               a ],
+        symbols[Group4]= [               A ]
     };
     key <AC02> {
         type= "ALPHABETIC",
@@ -1304,10 +1332,14 @@ xkb_symbols "pc+us+us:2+inet(evdev)" {
         symbols[Group1]= [               b,               B ]
     };
     key <AB06> {
-        type= "ALPHABETIC",
+        type[group1]= "ALPHABETIC",
+        type[group2]= "ALPHABETIC",
+        type[group3]= "ALPHABETIC",
+        type[group4]= "ONE_LEVEL",
         symbols[Group1]= [               n,               N ],
-        symbols[Group2]= [               n,               N ],
-        symbols[Group3]= [          ntilde,          Ntilde ]
+        symbols[Group2]= [          ntilde,          Ntilde ],
+        symbols[Group3]= [        NoSymbol,        NoSymbol ],
+        symbols[Group4]= [        NoSymbol ]
     };
     key <AB07> {
         type= "ALPHABETIC",
@@ -1403,7 +1435,7 @@ xkb_symbols "pc+us+us:2+inet(evdev)" {
     key <HENK> {         [     Henkan_Mode ] };
     key <HKTG> {         [ Hiragana_Katakana ] };
     key <MUHE> {         [        Muhenkan ] };
-    key <KPEN> {         [        KP_Enter ] };
+    key <KPEN> {         [     Mode_switch,     Mode_switch ] };
     key <RCTL> {         [       Control_R ] };
     key <KPDV> {
         type= "CTRL+ALT",
@@ -1414,8 +1446,14 @@ xkb_symbols "pc+us+us:2+inet(evdev)" {
         symbols[Group1]= [           Print,         Sys_Req ]
     };
     key <RALT> {
-        type= "TWO_LEVEL",
-        symbols[Group1]= [           Alt_R,          Meta_R ]
+        type[group1]= "TWO_LEVEL",
+        type[group2]= "ONE_LEVEL",
+        type[group3]= "ONE_LEVEL",
+        type[group4]= "ONE_LEVEL",
+        symbols[Group1]= [     Mode_switch,     Mode_switch ],
+        symbols[Group2]= [     Mode_switch ],
+        symbols[Group3]= [        NoSymbol ],
+        symbols[Group4]= [        NoSymbol ]
     };
     key <LNFD> {         [        Linefeed ] };
     key <HOME> {         [            Home ] };
@@ -1552,13 +1590,10 @@ xkb_symbols "pc+us+us:2+inet(evdev)" {
     modifier_map Shift { <RTSH> };
     modifier_map Mod1 { <LALT> };
     modifier_map Control { <CAPS> };
-    modifier_map Mod2 { <NMLK> };
-    modifier_map Mod5 { <LVL3> };
     modifier_map Control { <RCTL> };
     modifier_map Mod1 { <RALT> };
     modifier_map Mod4 { <LWIN> };
     modifier_map Mod4 { <RWIN> };
-    modifier_map Mod5 { <MDSW> };
     modifier_map Mod1 { <META> };
     modifier_map Mod4 { <SUPR> };
     modifier_map Mod4 { <HYPR> };

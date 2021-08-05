@@ -47,7 +47,7 @@ keycode  53 = x X x X x X
 keycode  54 = c C c C c C
 keycode  55 = v V v V v V
 keycode  56 = b B b B b B
-keycode  57 = n N n N ntilde Ntilde
+keycode  57 = n N n N n N
 keycode  58 = m M m M m M
 keycode  59 = comma less comma less comma less
 keycode  60 = period greater period greater period greater
@@ -251,3 +251,13 @@ clear lock
 clear control
 keycode 66 = Control_L
 add control = Control_L Control_R
+
+keycode 104 = Alt_R
+keysym Alt_R = Mode_switch Mode_switch Mode_switch Mode_switch
+
+keycode 57 = n N ntilde Ntilde
+keycode 38 = a A aacute Aacute a A
+keycode 26 = e E eacute Eacute e E
+keycode 31 = i I iacute Iacute i I
+keycode 32 = o O oacute Oacute o O
+keycode 30 = u U uacute Uacute u U
