@@ -1,15 +1,13 @@
-# Provision OSX with Ansible
+# Provision local machine with Ansible
 
-*Template for prosvisioning local OSX machine for web apps development*
-
-This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
+*Template for provisioning local OSX/Ubuntu machine for software development*
 
 ## Previous steps
 
 * Go to "Sharing" and change the machine's name.
 * Update the `group_vars/all.yml` accordingly.
 
-## Local provision
+## OSX Local provision
 
 * Install latest Xcode from App Store.
 * Make sure latest command line tools are installed (run
@@ -20,7 +18,7 @@ This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
 * Get this repo directory into the machine somehow.
 * Run `ansible-playbook -v --ask-become-pass --skip-tags=osx -i local provision.yml` in this directory.
 
-## Remote provision
+## OSX Remote provision
 
 0. Make sure you copied the priv/pub keys to the backup HD, together with all
    the other home files that you'll need.
@@ -35,7 +33,7 @@ This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
 9. [Import GPG keys](http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/)
 10. Build docker image to provision with ansible:
      ```
-     docker build -t ansible_provisioner -f Dockerfile.ansible
+     docker build -t ansible_provisioner -f Dockerfile.ansible .
      ```
 11. Create a container with this image and create a new ssh keypair.
     ```
@@ -48,6 +46,42 @@ This is inspired by [@roolo's provisioning scripts](roolo/provision-ansible).
     ```
     ansible-playbook --skip-tags=ubuntu -i remote provision.yml
     ```
+
+## Ubuntu Remote provision
+
+0. Make sure you copied all backup files that you'll need to the home directory, including SSH keys.
+1. [Install
+   Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+   and make sure it starts on boot.
+2. Instal the SSH server in the Ubuntu host machine:
+   ```
+   sudo apt install -y ssh
+   sudo systemctl enable --now ssh
+   ```
+3. Build docker image to provision with ansible:
+     ```
+     docker build -t ansible_provisioner -f Dockerfile.ansible .
+     ```
+4. Create a container with this image and create a new ssh keypair.
+    ```
+    docker run -it --rm -v=$(pwd):/app --workdir=/app ansible_provisioner /bin/bash
+    # ...
+    ssh-keygen
+    ```
+5. Copy this key to the host `.ssh/authorized_keys`.
+6. Run the ansible playbook:
+   ```
+   ansible-playbook --skip-tags=osx -i remote provision.yml
+   ```
+7. Install the following Gnome extensions:
+   * WinTile
+   * Application Menu
+8. Set the `numix` theme under settings.
+9. Add the remapping keys script to the startup apps:
+   * Name: remap keys
+   * Command: `bash -c "xkbcomp /home/sborrazas/.xkbmap $DISPLAY"`
+10. Change the local Wifi DNS to be `8.8.8.8,8.8.4.4`.
+11. Run bleachbit cleanups (and continue to do so every couple of months).
 
 ### Notes
 
