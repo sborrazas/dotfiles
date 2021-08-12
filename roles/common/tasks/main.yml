@@ -19,6 +19,12 @@
     dest: "{{ home_dir }}/.bin"
     mode: 0755
 
+- name: unison directory exists
+  copy:
+    src: unison/
+    dest: "{{ home_dir }}/.unison"
+    mode: 0755
+
 - name: ansible global config file exists
   template:
     src: ansible.cfg.j2

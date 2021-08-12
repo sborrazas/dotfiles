@@ -1,0 +1,17 @@
+# Roots of synchronization
+root = /home/sborrazas/
+root = /media/sborrazas/SEBABACKUP
+
+# Paths to synchronize
+path = Documents
+path = Downloads
+path = Pictures
+path = Desktop
+path = .ssh
+path = work
+
+# File to check that should exist on both roots
+mountpoint = check
+
+# command to run
+# unison backup
